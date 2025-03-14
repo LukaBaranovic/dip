@@ -1,5 +1,5 @@
 const express = require("express");
-const { getCategories } = require("./categoryController"); // Import the category controller
+const { getCategories, getItemsByCategory } = require("./categoryController"); // Import the category controller
 const db = require("./dbConfig"); // Import the database configuration
 const app = express();
 
@@ -14,5 +14,6 @@ db.getConnection((err, connection) => {
 });
 
 app.get("/api/categories", getCategories);
+app.get("/api/items/:categoryId", getItemsByCategory);
 
 app.listen(4500, () => console.log("Server running on port 4500"));
